@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.8)
+project(hello)
+add_executable(hello hello.cpp)
+set_property(TARGET hello PROPERTY CXX_STANDARD 11)
+include(CTest)
+add_test(NAME run_hello COMMAND ./hello)
