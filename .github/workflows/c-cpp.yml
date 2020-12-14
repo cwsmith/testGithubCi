@@ -13,8 +13,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: setup build directory
+      run: mkdir $HOME/build && cd $HOME/build
     - name: configure
-      run: cmake
+      run: cmake $GITHUB_WORKSPACE
     - name: make
       run: make
     - name: ctest
