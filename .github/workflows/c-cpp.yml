@@ -27,7 +27,7 @@ jobs:
        with:
          languages: ${{ matrix.language }}
          queries: security-and-quality
-         source-root: $GITHUB_WORKSPACE/foo
+         source-root: foo
      - name: setup build directory
        run: mkdir $HOME/build && cd $HOME/build
      - name: configure
