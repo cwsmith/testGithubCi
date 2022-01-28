@@ -10,9 +10,19 @@ jobs:
     strategy:
       matrix:
         compiler: [gcc, clang]
+        language: ['cpp']
+    # Permissions needed for codeql analysis
+    permissions:
+      security-events: write
     steps:
      - uses: actions/checkout@v2
      - run: echo ${{matrix.compiler}}
+    # Initializes the CodeQL tools for scanning.  This must be done before the code is built.
+     - name: Initialize CodeQL
+       uses: github/codeql-action/init@v1
+       with:
+         languages: ${{ matrix.language }}
+         queries: security-and-quality
      - name: setup build directory
        run: mkdir $HOME/build && cd $HOME/build
      - name: configure
@@ -21,3 +31,5 @@ jobs:
        run: make
      - name: ctest
        run: ctest
+     - name: Perform CodeQL Analysis
+       uses: github/codeql-action/analyze@v1       
