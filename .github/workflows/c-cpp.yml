@@ -15,18 +15,23 @@ jobs:
     permissions:
       security-events: write
     steps:
-     - uses: actions/checkout@v2
+     - name: checkout repo
+       uses: actions/checkout@v2
+       with: 
+         repository: cwsmith/testGithubCi
+         path: foo
      - run: echo ${{matrix.compiler}}
-    # Initializes the CodeQL tools for scanning.  This must be done before the code is built.
+     # Initializes the CodeQL tools for scanning.  This must be done before the code is built.
      - name: Initialize CodeQL
        uses: github/codeql-action/init@v1
        with:
          languages: ${{ matrix.language }}
          queries: security-and-quality
+         path: $GITHUB_WORKSPACE/foo
      - name: setup build directory
        run: mkdir $HOME/build && cd $HOME/build
      - name: configure
-       run: cmake $GITHUB_WORKSPACE -DCMAKE_CXX_COMPILER=${{ matrix.compiler }}
+       run: cmake $GITHUB_WORKSPACE/foo -DCMAKE_CXX_COMPILER=${{ matrix.compiler }}
      - name: make
        run: make
      - name: ctest
