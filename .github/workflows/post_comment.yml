@@ -16,9 +16,7 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     if: |
-      github.event.workflow_run.event == 'issue_comment' &&
-      contains(github.event.comment.body, '/runtests') &&
-      (github.event.comment.user.login == 'cwsmith')
+      github.event.workflow_run.event == 'issue_comment'
     steps:
       - name: echo
         shell: bash
