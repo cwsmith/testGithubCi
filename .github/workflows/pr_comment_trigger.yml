@@ -18,4 +18,6 @@ jobs:
     steps:
       - name: echo
         shell: bash
-        run: echo "github.workspace ${{github.workspace}}"
+        run: |
+          echo "github.workspace ${{github.workspace}}"
+          echo "RUNNER_TEMP $RUNNER_TEMP"
