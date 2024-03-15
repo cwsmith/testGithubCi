@@ -1,0 +1,21 @@
+name: pr_comment_trigger
+
+# Controls when the workflow will run
+on:
+  issue_comment:                                     
+    types: [created]
+
+jobs:
+  build_and_test:
+    permissions:
+      contents: read
+    # The type of runner that the job will run on
+    runs-on: ubuntu-22.04
+    if: |
+      github.event.issue.pull_request &&
+      contains(github.event.comment.body, '/runtests') &&
+      (github.event.comment.user.login == 'cwsmith')
+    steps:
+      - name: echo
+        shell: bash
+        run: echo "github.workspace ${{github.workspace}}"
