@@ -27,6 +27,6 @@ jobs:
           Simmetrix + CGNS Test Result: fail
           HEREDOC
           )
-          echo "$message"
+          echo "${message}"
           echo 'done writing"
 
