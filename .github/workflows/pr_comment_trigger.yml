@@ -21,3 +21,12 @@ jobs:
         run: |
           echo "github.workspace ${{github.workspace}}"
           echo "RUNNER_TEMP $RUNNER_TEMP"
+          message=$(cat << HEREDOC
+          [Build Log](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
+          Simmetrix Test Result: pass
+          Simmetrix + CGNS Test Result: fail
+          HEREDOC
+          )
+          echo "$message"
+          echo 'done writing"
+
