@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ main ]
     paths:
-      - hello.cpp
+      - '**.cpp'
 jobs:
   build:
     runs-on: ubuntu-latest
