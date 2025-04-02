@@ -1,0 +1,25 @@
+name: run on path changes
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    paths:
+      - hello.cpp
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+     - name: checkout repo
+       uses: actions/checkout@v2
+       with: 
+         repository: cwsmith/testGithubCi
+         path: foo
+     - name: setup build directory
+       run: mkdir $HOME/build && cd $HOME/build
+     - name: configure
+       run: cmake $GITHUB_WORKSPACE/foo
+     - name: make
+       run: make
+     - name: ctest
+       run: ctest
