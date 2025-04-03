@@ -1,11 +1,11 @@
 name: run on path changes
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: [ main, cws/testPr ]
     paths:
       - '**.cpp'
+  pull_request:
+    branches: [ main ]
 jobs:
   build:
     runs-on: ubuntu-latest
