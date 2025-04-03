@@ -1,6 +1,6 @@
 name: run on path changes in PR
 on:
-  pull-request:
+  pull_request:
     branches: [ main, cws/testPr ]
     paths:
     - '**.cpp'
