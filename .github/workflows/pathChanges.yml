@@ -1,7 +1,7 @@
 name: run on path changes
 on:
   push:
-    branches: [ main, cws/testPr ]
+    branches: [ main ]
     paths:
       - '**.cpp'
 jobs:
