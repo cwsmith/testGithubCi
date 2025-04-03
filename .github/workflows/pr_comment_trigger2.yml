@@ -1,0 +1,32 @@
+name: pr_comment_trigger2
+
+# Controls when the workflow will run
+on:
+  issue_comment:                                     
+    types: [created]
+
+jobs:
+  build_and_test:
+    permissions:
+      contents: read
+    # The type of runner that the job will run on
+    runs-on: ubuntu-22.04
+    if: |
+      github.event.issue.pull_request &&
+      contains(github.event.comment.body, '/runtests2') &&
+      (github.event.comment.user.login == 'cwsmith')
+    steps:
+      - name: echo
+        shell: bash
+        run: |
+          echo "github.workspace ${{github.workspace}}"
+          echo "RUNNER_TEMP $RUNNER_TEMP"
+          message=$(cat << HEREDOC
+          [Build Log](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
+          Simmetrix Test Result: pass
+          Simmetrix + CGNS Test Result: fail
+          HEREDOC
+          )
+          echo "${message}"
+          echo "done writing"
+

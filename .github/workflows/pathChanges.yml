@@ -2,8 +2,6 @@ name: run on path changes
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
     paths:
       - '**.cpp'
 jobs:
