@@ -1,4 +1,4 @@
 int main() {
-  auto x = 42;
+  auto x = 42; //true
   return x-x;
 }
