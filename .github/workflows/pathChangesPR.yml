@@ -3,7 +3,7 @@ on:
   pull_request:
     branches: [ main, cws/testPr ]
     paths:
-    - 'src/foo.cpp'
+    - '**/foo.cpp'
 jobs:
   build:
     runs-on: ubuntu-latest
