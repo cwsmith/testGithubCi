@@ -1,0 +1,12 @@
+name: run on path changes in PR
+on:
+  pull-request:
+    branches: [ main, cws/testPr ]
+    paths:
+    - '**.cpp'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+     - name: hi
+       run: echo 'Hello'
